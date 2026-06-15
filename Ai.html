@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<title>Positive Pips Academy AI</title>
+
+<style>
+*{
+box-sizing:border-box;
+}
+
+html, body{
+margin:0;
+padding:0;
+height:100%;
+overflow:hidden;
+font-family:Arial, sans-serif;
+background:linear-gradient(135deg,#0f172a,#1e3a8a,#0f766e);
+-webkit-text-size-adjust:100%;
+}
+
+/* APP LAYOUT */
+.app{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:flex;
+flex-direction:column;
+}
+
+/* HEADER */
+.header{
+padding:15px;
+text-align:center;
+color:white;
+font-weight:bold;
+background:rgba(0,0,0,0.25);
+backdrop-filter:blur(10px);
+}
+
+/* CHAT */
+#chat{
+flex:1;
+overflow-y:auto;
+padding:15px;
+display:flex;
+flex-direction:column;
+gap:10px;
+-webkit-overflow-scrolling:touch;
+}
+
+/* MESSAGES */
+.msg{
+max-width:80%;
+padding:10px;
+border-radius:12px;
+word-wrap:break-word;
+animation:pop 0.2s ease;
+}
+
+@keyframes pop{
+from{transform:scale(0.9); opacity:0;}
+to{transform:scale(1); opacity:1;}
+}
+
+.user{
+background:#2563eb;
+color:white;
+align-self:flex-end;
+}
+
+.bot{
+background:#10b981;
+color:white;
+align-self:flex-start;
+}
+
+/* INPUT */
+.input-area{
+display:flex;
+gap:10px;
+padding:10px;
+background:rgba(0,0,0,0.3);
+backdrop-filter:blur(10px);
+}
+
+input{
+flex:1;
+padding:12px;
+border:none;
+border-radius:8px;
+outline:none;
+font-size:16px; /* IMPORTANT: prevents iPhone zoom */
+}
+
+button{
+padding:12px 15px;
+border:none;
+border-radius:8px;
+background:#f59e0b;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:active{
+transform:scale(0.95);
+}
+@keyframes pulse {
+0% { transform: scale(1); }
+50% { transform: scale(1.1); }
+100% { transform: scale(1); }
+}
+body {
+transition: opacity 0.4s ease;
+}
+
+.fade-out {
+opacity: 0;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<div class="header" style="display:flex;align-items:center;justify-content:space-between;">
+
+  <div>🤖 Positive Pips Academy AI Assistant</div>
+
+  <div onclick="closeAI()" style="
+    width:38px;
+    height:38px;
+    background:#2563eb;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:50%;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 0 10px rgba(37,99,235,0.5);
+    animation:pulse 1.8s infinite;
+  ">
+    ×
+  </div>
+
+</div>
+
+<div id="chat">
+<div class="msg bot">Hello 👋 Ask me anything about Forex, Crypto, Signals or Positive Pips Academy.</div>
+</div>
+
+<div class="input-area">
+<input type="text" id="question" placeholder="Ask your question...">
+<button onclick="askAI()">Send</button>
+</div>
+
+</div>
+
+<script>
+
+/* ================= 100+ KNOWLEDGE BASE ================= */
+
+const knowledgeBase = [
+
+/* ================= FOREX (1–40) ================= */
+
+{q:["what is forex","define forex"],a:"Forex is the global market where currencies are traded."},
+{q:["what is pip"],a:"A pip is the smallest movement in forex price."},
+{q:["what is lot size"],a:"Lot size is the volume of a trade."},
+{q:["what is leverage"],a:"Leverage lets you control large trades with small capital."},
+{q:["what is spread"],a:"Spread is the difference between buy and sell price."},
+{q:["what is margin"],a:"Margin is the required amount to open a trade."},
+{q:["what is stop loss"],a:"Stop loss limits your losses automatically."},
+{q:["what is take profit"],a:"Take profit closes trade at your target profit."},
+{q:["what is candlestick"],a:"Candlestick shows price movement in trading charts."},
+{q:["what is support"],a:"Support is a level where price may rise."},
+
+{q:["what is resistance"],a:"Resistance is a level where price may fall."},
+{q:["what is trend"],a:"Trend is the general direction of the market."},
+{q:["what is bullish"],a:"Bullish means the market is going up."},
+{q:["what is bearish"],a:"Bearish means the market is going down."},
+{q:["what is volatility"],a:"Volatility is how fast price moves."},
+{q:["what is liquidity"],a:"Liquidity is how easily trades are executed."},
+{q:["what is forex trading"],a:"Forex trading is buying and selling currencies."},
+{q:["what is technical analysis"],a:"Technical analysis uses charts to predict price."},
+{q:["what is fundamental analysis"],a:"Fundamental analysis uses news and economic data."},
+{q:["best forex pairs"],a:"Popular pairs are EUR/USD, GBP/USD, USD/JPY."},
+
+{q:["what is risk management"],a:"Risk management protects your trading capital."},
+{q:["what is drawdown"],a:"Drawdown is the reduction in account balance."},
+{q:["what is equity"],a:"Equity is your real account balance including profit/loss."},
+{q:["what is balance"],a:"Balance is your account without open trades."},
+{q:["what is swap"],a:"Swap is overnight trading fee."},
+{q:["what is broker"],a:"A broker gives access to trading markets."},
+{q:["what is chart"],a:"A chart shows price movement over time."},
+{q:["what is timeframe"],a:"Timeframe is the period shown on a chart."},
+{q:["what is breakout"],a:"Breakout is when price crosses support or resistance."},
+{q:["what is reversal"],a:"Reversal is when market changes direction."},
+
+{q:["what is entry point"],a:"Entry point is where you open a trade."},
+{q:["what is exit point"],a:"Exit point is where you close a trade."},
+{q:["what is scalping"],a:"Scalping is quick short-term trading."},
+{q:["what is swing trading"],a:"Swing trading holds trades for days or weeks."},
+{q:["what is day trading"],a:"Day trading closes trades within the same day."},
+{q:["what is margin call"],a:"Margin call happens when funds are too low."},
+{q:["what is hedging"],a:"Hedging reduces trading risk."},
+{q:["what is slippage"],a:"Slippage is difference between expected and actual price."},
+{q:["what is order"],a:"An order is instruction to buy or sell."},
+{q:["what is market order"],a:"Market order executes immediately at market price."},
+
+/* ================= SIGNALS (41–60) ================= */
+
+{q:["what is trading signal"],a:"A trading signal tells you when to buy or sell."},
+{q:["are signals safe"],a:"Signals are not guaranteed — use risk management."},
+{q:["how do signals work"],a:"Signals are based on market analysis."},
+{q:["who gives signals"],a:"Signals are given by analysts or systems."},
+{q:["best signal strategy"],a:"Combine technical and fundamental analysis."},
+{q:["can signals fail"],a:"Yes, no signal is 100% accurate."},
+{q:["signal entry"],a:"Entry is the price to open a trade."},
+{q:["signal stop loss"],a:"Stop loss protects your trade from loss."},
+{q:["signal take profit"],a:"Take profit locks your profit."},
+{q:["free signals"],a:"Free signals may not always be reliable."},
+
+{q:["paid signals"],a:"Paid signals often come from experienced traders."},
+{q:["copy trading"],a:"Copy trading follows expert traders automatically."},
+{q:["signal accuracy"],a:"Accuracy depends on strategy and market conditions."},
+{q:["why signals fail"],a:"Market changes can affect signal performance."},
+{q:["signal provider"],a:"A signal provider gives trading suggestions."},
+{q:["best signals"],a:"Best signals combine analysis and risk control."},
+{q:["signal risk"],a:"Always manage risk when using signals."},
+{q:["signal profit"],a:"Profit is not guaranteed in trading signals."},
+{q:["signal alert"],a:"Alerts notify traders of opportunities."},
+{q:["signal app"],a:"Signal apps deliver trading notifications."},
+
+/* ================= CRYPTO (61–80) ================= */
+
+{q:["what is bitcoin"],a:"Bitcoin is the first cryptocurrency."},
+{q:["what is crypto"],a:"Crypto is digital currency."},
+{q:["what is blockchain"],a:"Blockchain is a secure transaction system."},
+{q:["what is ethereum"],a:"Ethereum is a smart contract platform."},
+{q:["what is wallet"],a:"A wallet stores crypto safely."},
+{q:["what is altcoin"],a:"Altcoins are cryptocurrencies besides Bitcoin."},
+{q:["is crypto safe"],a:"Crypto is risky and volatile."},
+{q:["how to trade crypto"],a:"Buy low, sell high using exchanges."},
+{q:["what is exchange"],a:"Exchange is where crypto is traded."},
+{q:["what is mining"],a:"Mining validates blockchain transactions."},
+
+{q:["what is nft"],a:"NFT is a unique digital asset."},
+{q:["what is token"],a:"Token represents value on blockchain."},
+{q:["what is usdt"],a:"USDT is a stablecoin tied to USD."},
+{q:["what is volatility crypto"],a:"Crypto prices change very fast."},
+{q:["crypto profit"],a:"Profit comes from price increase."},
+{q:["crypto loss"],a:"Loss happens when price drops."},
+{q:["long term crypto"],a:"Holding crypto for long period."},
+{q:["short term crypto"],a:"Quick buying and selling."},
+{q:["crypto risk"],a:"Crypto is highly risky."},
+{q:["crypto market"],a:"Global digital currency market."},
+
+/* ================= Positive Pips ACADEMY (81–90) ================= */
+
+{q:["what is Positive pips academy"],a:"Positive Pips Academy is a learning platform."},
+{q:["who created positive pips academy"],a:"Positive pips Academy was created for education."},
+{q:["positive pips academy courses"],a:"Courses include trading and skills."},
+{q:["how to register"],a:"Click sign up on homepage."},
+{q:["certificate"],a:"Certificates are awarded after completion."},
+{q:["support"],a:"Use contact page for help."},
+{q:["login"],a:"Login using your account details."},
+{q:["dashboard"],a:"Dashboard shows your progress."},
+{q:["student account"],a:"Your account stores learning data."},
+{q:["positive pips  academy free"],a:"Some content may be free."},
+
+/* ================= GENERAL (91–100) ================= */
+
+{q:["hello","hi","hey"],a:"Hello 👋 Welcome to positive pips AI."},
+{q:["help"],a:"Ask me about Forex, Crypto, Signals, Positive Pips Academy."},
+{q:["who are you"],a:"I am Positive Pips Academy AI Assistant."},
+{q:["thank you"],a:"You're welcome 😊"},
+{q:["goodbye"],a:"Goodbye 👋 Come back anytime."},
+{q:["time"],a:"Check your device for current time."},
+{q:["date"],a:"Check your device for today's date."},
+{q:["what can you do"],a:"I can teach Forex, Crypto, and trading basics."},
+{q:["are you real"],a:"I am a programmed AI assistant."},
+{q:["bye"],a:"Goodbye 👋 Stay safe."}
+
+];
+
+/* ================= AI FUNCTION ================= */
+
+function askAI(){
+
+let input = document.getElementById("question");
+let question = input.value.toLowerCase().trim();
+if(question==="") return;
+
+let chat = document.getElementById("chat");
+
+/* USER MESSAGE */
+let user = document.createElement("div");
+user.className="msg user";
+user.innerHTML=input.value;
+chat.appendChild(user);
+
+/* DEFAULT ANSWER */
+let answer = "Sorry, I don't understand that yet. Try asking about Forex, Crypto or MD Academy.";
+for(let item of knowledgeBase){
+for(let key of item.q){
+if(question.includes(key)){
+answer = item.a;
+break;
+}
+}
+}
+
+/* SEARCH KNOWLEDGE */
+for(let item of knowledgeBase){
+for(let key of item.q){
+if(question.includes(key)){
+answer = item.a;
+break;
+}
+}
+}
+
+/* BOT MESSAGE */
+let bot = document.createElement("div");
+bot.className="msg bot";
+bot.innerHTML="Positive Pips AI: typing...";
+chat.appendChild(bot);
+
+/* SCROLL */
+chat.scrollTop = chat.scrollHeight;
+
+/* RESPONSE */
+setTimeout(()=>{
+bot.innerHTML = "Positive pips AI: " + answer;
+chat.scrollTop = chat.scrollHeight;
+},600);
+
+input.value="";
+}
+
+/* STOP iPHONE ZOOM + FIX */
+document.addEventListener("touchstart", function(){}, true);
+
+let lastTouch = 0;
+document.addEventListener("touchend", function(e){
+let now = new Date().getTime();
+if(now - lastTouch <= 300){
+e.preventDefault();
+}
+lastTouch = now;
+});
+function closeAI(){
+document.body.classList.add("fade-out");
+
+setTimeout(()=>{
+window.location.href = "index.html";
+},400);
+}
+
+</script>
+
+</body>
+</html>

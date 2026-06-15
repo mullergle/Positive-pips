@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Signal Class | Positive Pips Academy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins', sans-serif;
+}
+
+body{
+background:#0a0f1c;
+color:#fff;
+overflow-x:hidden;
+line-height:1.6;
+}
+
+/* CLOSE BUTTON */
+.close-btn{
+position:fixed;
+top:15px;
+right:20px;
+width:42px;
+height:42px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#00ffcc;
+color:#000;
+font-size:20px;
+font-weight:bold;
+border-radius:50%;
+text-decoration:none;
+transition:0.3s;
+z-index:1000;
+animation:fadeIn 1s ease;
+}
+
+.close-btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 15px rgba(0,255,204,0.4);
+}
+
+/* HEADER */
+header{
+padding:60px 20px;
+text-align:center;
+background:linear-gradient(135deg,#0a0f1c,#111a33);
+border-bottom:1px solid #1f2a44;
+animation:slideDown 1s ease;
+}
+
+header h1{
+font-size:42px;
+color:#00ffcc;
+letter-spacing:1px;
+animation:fadeInUp 1.2s ease;
+}
+
+header p{
+margin-top:10px;
+color:#cbd6ff;
+font-size:15px;
+animation:fadeInUp 1.4s ease;
+}
+
+/* PRICE SECTION */
+.price-section{
+padding:50px 20px;
+text-align:center;
+}
+
+.price-section h2{
+color:#00ffcc;
+font-size:28px;
+margin-bottom:25px;
+animation:fadeInUp 1s ease;
+}
+
+.price-container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+}
+
+.price-box{
+background:#111a33;
+padding:28px;
+border-radius:14px;
+width:260px;
+border:1px solid #00ffcc22;
+transition:0.4s;
+opacity:0;
+transform:translateY(30px);
+animation:fadeUp 1s forwards;
+}
+
+.price-box:nth-child(1){animation-delay:0.2s;}
+.price-box:nth-child(2){animation-delay:0.4s;}
+
+.price-box:hover{
+transform:translateY(-10px) scale(1.02);
+box-shadow:0 0 18px rgba(0,255,204,0.2);
+}
+
+.price-box h3{
+color:#00ffcc;
+font-size:18px;
+margin-bottom:10px;
+}
+
+.price-box .amount{
+font-size:30px;
+font-weight:700;
+color:#ffffff;
+margin-bottom:8px;
+}
+
+/* CONTENT */
+.container{
+max-width:900px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:#111a33;
+padding:28px;
+border-radius:14px;
+margin-bottom:20px;
+border:1px solid #00ffcc22;
+opacity:0;
+transform:translateY(30px);
+animation:fadeUp 1s forwards;
+}
+
+.card:nth-child(1){animation-delay:0.2s;}
+.card:nth-child(2){animation-delay:0.4s;}
+.card:nth-child(3){animation-delay:0.6s;}
+.card:nth-child(4){animation-delay:0.8s;}
+.card:nth-child(5){animation-delay:1s;}
+
+.card h2{
+color:#00ffcc;
+font-size:20px;
+margin-bottom:10px;
+}
+
+.card p{
+color:#cbd6ff;
+font-size:14px;
+}
+
+/* LIST */
+.list{
+margin-top:10px;
+padding-left:18px;
+color:#cbd6ff;
+}
+
+.list li{
+margin-bottom:6px;
+}
+
+/* BUTTON */
+.btn{
+display:block;
+text-align:center;
+margin:35px auto;
+padding:13px 25px;
+width:220px;
+background:#00ffcc;
+color:#000;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-weight:600;
+text-decoration:none;
+transition:0.3s;
+animation:fadeInUp 1.5s ease;
+}
+
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px rgba(0,255,204,0.4);
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+@keyframes fadeInUp{
+from{opacity:0;transform:translateY(20px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes slideDown{
+from{opacity:0;transform:translateY(-40px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes fadeUp{
+to{opacity:1;transform:translateY(0);opacity:1;}
+from{opacity:0;transform:translateY(30px);}
+}
+
+/* FOOTER */
+footer{
+text-align:center;
+padding:25px;
+color:#777;
+border-top:1px solid #222;
+margin-top:30px;
+font-size:13px;
+animation:fadeIn 2s ease;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- CLOSE BUTTON -->
+<a href="index.html" class="close-btn">✕</a>
+
+<header>
+<h1>Signal Class</h1>
+<p>Professional Forex Signal Service by Positive Pips Academy</p>
+</header>
+
+<!-- PRICE -->
+<div class="price-section">
+
+<h2>Subscription Plans</h2>
+
+<div class="price-container">
+
+<div class="price-box">
+<h3>Standard Plan</h3>
+<div class="amount">$36</div>
+<p>2 Months Access</p>
+</div>
+
+<div class="price-box">
+<h3>Premium Plan</h3>
+<div class="amount">$72</div>
+<p>4 Months Access</p>
+</div>
+
+</div>
+</div>
+
+<div class="container">
+
+<div class="card">
+<h2>Service Overview</h2>
+<p>
+Our signals are professionally analyzed using technical structure, market trends, and risk management principles.
+</p>
+</div>
+
+<div class="card">
+<h2>Signal Delivery</h2>
+<p>Signals are sent 3 times daily for optimal trading opportunities.</p>
+
+<ul class="list">
+<li>Morning Session</li>
+<li>Midday Session</li>
+<li>Evening Session</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Working Days</h2>
+<p>Monday to Friday only. No weekend signals due to low market liquidity.</p>
+</div>
+
+<div class="card">
+<h2>Renewal Policy</h2>
+<p>Subscriptions are renewed every 2–4 months depending on plan selection.</p>
+</div>
+
+<div class="card">
+<h2>⚠️Important Note</h2>
+<p>All signals are strictly for educational and trading purposes. Proper risk management is required at all times.</p>
+</div>
+
+
+
+
+
+<footer>
+© 2026 Positive Pips Academy. All Rights Reserved.
+</footer>
+
+</body>
+</html>

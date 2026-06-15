@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Positive Pips Forex Academy</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins', sans-serif;
+}
+
+body{
+background:#0a0f1c;
+color:#fff;
+overflow-x:hidden;
+}
+
+/* HERO SECTION */
+.hero{
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+background:linear-gradient(135deg,#0a0f1c,#111a33);
+position:relative;
+}
+
+.hero h1{
+font-size:50px;
+color:#00ffcc;
+animation:fadeDown 1s ease-in-out;
+}
+
+.hero p{
+font-size:18px;
+margin-top:10px;
+color:#ccc;
+max-width:600px;
+animation:fadeUp 1.2s ease-in-out;
+}
+
+.btn{
+margin-top:25px;
+padding:12px 25px;
+background:#00ffcc;
+color:#000;
+border:none;
+border-radius:30px;
+cursor:pointer;
+font-weight:600;
+transition:0.3s;
+animation:fadeUp 1.4s ease-in-out;
+}
+
+.btn:hover{
+transform:scale(1.1);
+box-shadow:0 0 20px #00ffcc;
+}
+
+/* FLOATING EFFECT */
+.circle{
+position:absolute;
+width:200px;
+height:200px;
+background:#00ffcc33;
+border-radius:50%;
+filter:blur(60px);
+animation:float 6s infinite ease-in-out;
+}
+
+.circle:nth-child(1){top:10%;left:10%;}
+.circle:nth-child(2){bottom:10%;right:10%;}
+
+/* PRICING */
+.section{
+padding:80px 20px;
+text-align:center;
+}
+
+.section h2{
+font-size:35px;
+margin-bottom:40px;
+color:#00ffcc;
+}
+
+.cards{
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:20px;
+}
+
+.card{
+background:#111a33;
+padding:25px;
+width:250px;
+border-radius:15px;
+transition:0.3s;
+border:1px solid #00ffcc33;
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 20px #00ffcc55;
+}
+
+.price{
+font-size:28px;
+color:#00ffcc;
+margin:10px 0;
+}
+
+.card button{
+margin-top:15px;
+padding:10px;
+width:100%;
+border:none;
+border-radius:10px;
+background:#00ffcc;
+cursor:pointer;
+font-weight:600;
+}
+
+/* FOOTER */
+footer{
+padding:30px;
+text-align:center;
+color:#777;
+border-top:1px solid #222;
+}
+
+/* ANIMATIONS */
+@keyframes fadeDown{
+from{opacity:0;transform:translateY(-50px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes fadeUp{
+from{opacity:0;transform:translateY(50px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+@keyframes float{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-30px);}
+100%{transform:translateY(0px);}
+}
+
+/* MOBILE */
+@media(max-width:768px){
+.hero h1{font-size:32px;}
+.cards{flex-direction:column;align-items:center;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="hero">
+<div class="circle"></div>
+<div class="circle"></div>
+
+<h1>POSITIVE PIPS FOREX ACADEMY</h1>
+<p>Learn Forex Trading, Get Professional Signals, Mentorship & Account Management Services to grow your income in the financial market.</p>
+
+<button class="btn" onclick="scrollToSection()">Get Started</button>
+
+  
+</div>
+
+<!-- PRICING -->
+<div class="section" id="pricing">
+
+<h2>Our Packages</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Forex Class</h3>
+<div class="price">$150</div>
+<p>Full forex trading course for beginners to advanced traders.</p>
+<a href="enrol.html">
+<button>Learn More</button>
+</div></a>
+
+<div class="card">
+<h3>Signal Class</h3>
+
+<p>2 and 4 months premium trading signal plan with high accuracy setups.</p>
+<a href="signal1.html">
+<button>Learn More</button>
+</div></a>
+
+<div class="card">
+<h3>Mentorship</h3>
+<div class="price">$100</div>
+<p>2 months one-on-one mentorship and trading guidance.</p>
+<a href="mentor.html">
+<button>Learn More</button>
+</div></a>
+
+<div class="card">
+<h3>Account Management</h3>
+
+<p>We trade your account professionally and share profits.</p>
+<a href="account.html">
+<button>Learn More</button>
+</div></a>
+
+</div>
+
+</div>
+
+
+
+
+
+<footer>
+© 2026 POSITIVE PIPS Forex Academy. All Rights Reserved.
+</footer>
+
+<script>
+function scrollToSection(){
+document.getElementById("pricing").scrollIntoView({behavior:"smooth"});
+}
+</script>
+<a href="Ai.html">
+<div style="
+position:fixed;
+bottom:20px;
+right:20px;
+background:#2563eb;
+color:white;
+padding:15px 18px;
+border-radius:50px;
+box-shadow:0 0 15px rgba(0,0,0,0.4);
+font-weight:bold;
+font-size:14px;
+z-index:9999;
+cursor:pointer;
+">
+🤖 AI
+</div>
+</a>
+</body>
+</html>
